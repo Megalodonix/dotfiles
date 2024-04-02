@@ -1,0 +1,45 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export LANG:en_US
+SETUVAR --export LC_CTYPE:en_US\x2eUTF\x2d8
+SETUVAR --export QT_QPA_PLATFORMTHEME:gtk2
+SETUVAR __fish_initialized:3400
+SETUVAR fish_color_autosuggestion:eceff4
+SETUVAR fish_color_cancel:b48ead
+SETUVAR fish_color_command:81a1c1
+SETUVAR fish_color_comment:4c566a
+SETUVAR fish_color_cwd:88c0d0
+SETUVAR fish_color_cwd_root:normal
+SETUVAR fish_color_end:eceff4
+SETUVAR fish_color_error:bf616a
+SETUVAR fish_color_escape:ebcb8b
+SETUVAR fish_color_history_current:\x1d
+SETUVAR fish_color_host:81a1c1
+SETUVAR fish_color_host_remote:yellow
+SETUVAR fish_color_keyword:\x1d
+SETUVAR fish_color_match:88c0d0
+SETUVAR fish_color_normal:d8dee9
+SETUVAR fish_color_operator:81a1c1
+SETUVAR fish_color_option:\x1d
+SETUVAR fish_color_param:d8dee9
+SETUVAR fish_color_quote:a3be8c
+SETUVAR fish_color_redirection:81a1c1
+SETUVAR fish_color_search_match:88c0d0
+SETUVAR fish_color_selection:\x2dr
+SETUVAR fish_color_status:normal
+SETUVAR fish_color_user:d8dee9
+SETUVAR fish_color_valid_path:\x1d
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_background:\x1d
+SETUVAR fish_pager_color_completion:eceff4
+SETUVAR fish_pager_color_description:5e81ac
+SETUVAR fish_pager_color_prefix:ebcb8b
+SETUVAR fish_pager_color_progress:d08770
+SETUVAR fish_pager_color_secondary_background:\x1d
+SETUVAR fish_pager_color_secondary_completion:\x1d
+SETUVAR fish_pager_color_secondary_description:\x1d
+SETUVAR fish_pager_color_secondary_prefix:\x1d
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_pager_color_selected_completion:\x1d
+SETUVAR fish_pager_color_selected_description:\x1d
+SETUVAR fish_pager_color_selected_prefix:\x1d

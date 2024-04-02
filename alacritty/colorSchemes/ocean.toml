@@ -1,0 +1,50 @@
+# Default colors
+[colors.primary]
+background = '#00203e'
+foreground = '#f6eeee'
+
+# Normal colors
+[colors.normal]
+black =   '#091a34'
+red =     '#b5472a'
+green =   '#a2cb7e'
+yellow =  '#ebcb8b'
+blue =    '#186dbb'
+magenta = '#b48ead'
+cyan =    '#79c2c0'
+white =   '#d6d9e0'
+
+# Bright colors
+[colors.bright]
+black =   '#1a2439'
+red =     '#c64e2f'
+green =   '#acd885'
+yellow =  '#f6cb75'
+blue =    '#1a81e0'
+magenta = '#d18ec5'
+cyan =    '#8ccfcd'
+white =   '#eff1f5'
+
+
+# Indexed Colors
+[[colors.indexed_colors]]
+index = 16
+color = '#161b1d'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ebf8ff'
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "FairiesevkaTerm Nerd Font Mono"
+
+[window]
+opacity = 0.75
+title = "Alacritty"
+
+[window.dimensions]
+columns = 105
+lines = 30

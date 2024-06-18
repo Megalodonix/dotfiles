@@ -1,0 +1,208 @@
+[NORD]
+screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentLayout(background=Nord.fg0, foreground=Nord.bg, **powerline),
+                widget.GroupBox(background=Nord.bg,
+                                **powerline,
+                                active=Nord.fg,
+                                inactive=Nord.blue,
+                                highlight_method="line",
+                                highlight_color=[Nord.bg],
+                                hide_unused=False,
+                                fontsize=14,
+                                disable_drag=True,
+                                this_current_screen_border=Nord.green),
+
+                widget.Prompt(background=Nord.cyan, **powerline, prompt="Summon: ", foreground=Nord.bg),
+                widget.WindowName(background=Nord.blue,
+                                  foreground=Nord.bg,
+                                  scroll=True,
+                                  max_chars=0,
+                                  width=350,
+                                  scroll_clear=False,
+                                  scroll_delay=1,
+                                  scroll_step=2,
+                                  **powerline),
+                widget.Spacer(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox(**powerlineAlter),
+                widget.Cmus(**powerlineAlter, play_color=Nord.bg, background=Nord.purple, format="󰝚   {title}", fontsize=16),
+                widget.Systray(**powerlineAlter, background=Nord.fg), 
+                widget.Clock(format="󰞌  %b %d %a %I:%M %p",**powerlineAlter, background=Nord.bg, fontsize=16, foreground=Nord.fg),
+                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background=Nord.cyan, fontsize=14, foreground=Nord.bg),
+                ],
+            18,
+            background = Nord.bg,
+        ),
+    ),
+]
+
+[GRUV]
+
+screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentLayout(background=Gruvbox.fg0, foreground=Gruvbox.bg, **powerline),
+                widget.GroupBox(background=Gruvbox.bg,
+                                **powerline,
+                                active=Gruvbox.fg,
+                                inactive=Gruvbox.yellow,
+                                highlight_method="line",
+                                hide_unused=False,
+                                fontsize=14,
+                                disable_drag=True,
+                                this_current_screen_border=Gruvbox.green),
+
+                widget.Prompt(background=Gruvbox.green, **powerline, prompt="Summon: ", foreground=Gruvbox.bg),
+                widget.WindowName(background=Gruvbox.blue,
+                                  foreground=Gruvbox.bg,
+                                  scroll=True,
+                                  max_chars=0,
+                                  width=350,
+                                  scroll_clear=False,
+                                  scroll_delay=1,
+                                  scroll_step=2,
+                                  **powerline),
+                widget.Spacer(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.TextBox(**powerlineAlter),
+                widget.Cmus(**powerlineAlter, play_color=Gruvbox.bg, background=Gruvbox.purple, format="󰝚   {title}", fontsize=16),
+                widget.Systray(**powerlineAlter, background=Gruvbox.fg), 
+                widget.Clock(format="󰞌  %b %d %a %I:%M %p",**powerlineAlter, background=Gruvbox.bg, fontsize=16, foreground=Gruvbox.fg),
+                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background=Gruvbox.cyan, fontsize=14, foreground=Gruvbox.bg),
+                ],
+            18,
+            background = "#000",
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
+        # By default we handle these events delayed to already improve performance, however your system might still be struggling
+        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
+        # x11_drag_polling_rate = 60,
+    ),
+]
+
+[RED]
+
+screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentLayout(background="#000", foreground="#fff", **powerline),
+                widget.GroupBox(background="#000",
+                                **powerline,
+                                active="#ffffff",
+                                inactive="#e90003",
+                                highlight_method="line",
+                                highlight_color=[Red.black, Red.red],
+                                hide_unused=False,
+                                fontsize=14,
+                                disable_drag=True,
+                                this_current_screen_border=Red.red),
+
+                widget.Prompt(background="#fff", **powerline, prompt="Summon: ", foreground="#e90003"),
+                widget.WindowName(background=Red.red,
+                                  foreground="#fff",
+                                  scroll=True,
+                                  max_chars=0,
+                                  width=350,
+                                  scroll_clear=False,
+                                  scroll_delay=1,
+                                  scroll_step=2,
+                                  **powerline),
+                widget.Spacer(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.TextBox(**powerlineAlter),
+                widget.Cmus(**powerlineAlter, play_color="#fff", background="#e90003", format="󰝚   {title}", fontsize=16),
+                widget.Systray(**powerlineAlter, background="#000"), 
+                widget.Clock(format="󰞌  %b %d %a %I:%M %p",**powerlineAlter, background="#000", fontsize=16, foreground="#fff"),
+                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background=Red.red, fontsize=14, foreground="#fff"),
+                ],
+            18,
+            background = "#000",
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
+        # By default we handle these events delayed to already improve performance, however your system might still be struggling
+        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
+        # x11_drag_polling_rate = 60,
+    ),
+]
+
+[Based blue :) ]
+screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentLayout(background="#000000", **powerline),
+                widget.GroupBox(background="#0316b0",
+                                **powerline,
+                                active="#fefefe",
+                                inactive="#70fffa",
+                                highlight_method="line",
+                                highlight_color=['#0316b0'],
+                                hide_unused=False,
+                                fontsize=14,
+                                disable_drag=True,
+                                this_current_screen_border="#70fffa"),
+
+                widget.Prompt(background="#70fffa", **powerline, prompt="Summon: ", foreground="#0316b0"),
+                widget.WindowName(background="#fefefe",
+                                  foreground="#084bbc",
+                                  scroll=True,
+                                  max_chars=0,
+                                  width=350,
+                                  scroll_clear=False,
+                                  scroll_delay=1,
+                                  scroll_step=2,
+                                  **powerline),
+                widget.Spacer(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.TextBox(**powerlineAlter),
+                widget.Cmus(**powerlineAlter, play_color="#fefefe", background="#084bbc", format="󰝚   {title}", fontsize=16),
+                widget.Systray(**powerlineAlter, background="#fefefe"), 
+                widget.Clock(format="󰞌  %b %d %a %I:%M %p",**powerlineAlter, background="#0316b0", fontsize=16, foreground="#fefefe"),
+                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background="#000", fontsize=14, foreground="#fefefe"),
+                ],
+            18,
+            background = "#1da0fb",
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
+        # By default we handle these events delayed to already improve performance, however your system might still be struggling
+        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
+        # x11_drag_polling_rate = 60,
+    ),
+]

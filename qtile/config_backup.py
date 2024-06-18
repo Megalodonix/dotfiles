@@ -30,8 +30,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration, RectDecoration
-from myColorSchemes import Nord as mainCol
+from qtile_extras.widget.decorations import PowerLineDecoration
+from myColorSchemes import Blue
 
 rofi = os.path.expanduser("~/.config/rofi/launchers/type-6/launcher.sh")
 printscr = os.path.expanduser("~/.config/rofi/applets/bin/screenshot.sh"),
@@ -136,28 +136,24 @@ for i in groups:
 
 layouts = [
     layout.Columns(
-        border_focus=[mainCol.fg],
-        border_normal=[mainCol.bg],
-        margin=8,
-        margin_on_single=None,
-        border_width=1,
-        grow_amount=5,
-        num_columns=2),
-
+        border_focus=["#c0caf5"],
+        border_normal=["#414868"],
+        margin=4,
+        border_width=1),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     #layout.Stack(num_stacks=2),
     layout.Bsp(),
     #layout.Matrix(),
-    #layout.MonadTall(),
+    layout.MonadTall(),
     #layout.MonadWide(),
-    #layout.RatioTile(),
+    layout.RatioTile(),
     #layout.Tile(),
-    #layout.Spiral(
-        #border_focus=[mainCol.fg],
-        #border_normal=[mainCol.bg],
-        #margin=4,
-        #border_width=1),
+    layout.Spiral(
+        border_focus=["#c0caf5"],
+        border_normal=["#414868"],
+        margin=4,
+        border_width=1),
     #layout.TreeTab(),
     #layout.VerticalTile(),
     layout.Zoomy(),
@@ -184,63 +180,32 @@ powerlineAlter = {
         "padding": 10,
         }
 
-rectDeco = {
-        "decorations": [
-            RectDecoration(radius=10, filled=True, use_widget_background=True, group=True, line_width=1, line_colour=mainCol.blue)
-            ],
-        "padding": 10,
-        }
-
-
-blank = "#00000000"
-
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Sep(
-                    padding=10,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-                widget.CurrentLayoutIcon(custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-                                         scale=0.6,
-                                         background=mainCol.fg,
-                                         **rectDeco
-                    ),
-                widget.Sep(
-                    padding=12,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-
-                widget.GroupBox(background=mainCol.bg,
-                                **rectDeco,
-                                active=mainCol.fg,
-                                inactive=mainCol.blue,
-                                highlight_method="text",
-                                highlight_color=[mainCol.bg],
+                widget.CurrentLayout(background="#000000", **powerline),
+                widget.GroupBox(background="#0316b0",
+                                **powerline,
+                                active="#fefefe",
+                                inactive="#70fffa",
+                                highlight_method="line",
+                                highlight_color=['#0316b0'],
                                 hide_unused=False,
                                 fontsize=14,
-                                margin=2,
                                 disable_drag=True,
-                                this_current_screen_border=mainCol.green),
-                widget.Sep(
-                    padding=16,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-                widget.Prompt(background=mainCol.green, **rectDeco, prompt="Summon: ", foreground=mainCol.bg),
-                widget.Spacer(),
-                widget.WindowName(background=mainCol.cyan,
-                                  foreground=mainCol.bg,
+                                this_current_screen_border="#70fffa"),
+
+                widget.Prompt(background="#70fffa", **powerline, prompt="Summon: ", foreground="#0316b0"),
+                widget.WindowName(background="#fefefe",
+                                  foreground="#084bbc",
                                   scroll=True,
                                   max_chars=0,
                                   width=350,
                                   scroll_clear=False,
                                   scroll_delay=1,
                                   scroll_step=2,
-                                  **rectDeco),
+                                  **powerline),
                 widget.Spacer(),
                 widget.Chord(
                     chords_colors={
@@ -248,35 +213,23 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Cmus(**rectDeco, play_color=mainCol.bg, background=mainCol.purple, format="󰝚   {title}", width=200, scroll=True, scroll_clear=False, scroll_step=2),
-                widget.Sep(
-                    padding=10,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-                widget.Systray(background=blank, icon_size=25),
-                widget.Sep(
-                    padding=10,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-                widget.Clock(format="   %b %d %a  |  󰞌  %I:%M %p",**rectDeco, background=mainCol.blue, fontsize=16, foreground=mainCol.bg),
-                widget.Sep(
-                    padding=5,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
-                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background=mainCol.green, fontsize=14, foreground=mainCol.bg, **rectDeco),
-                widget.Sep(
-                    padding=5,
-                    linewidth=0,
-                    background="#00000000",
-                    ),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.TextBox(**powerlineAlter),
+                widget.Cmus(**powerlineAlter, play_color="#fefefe", background="#084bbc", format="󰝚   {title}", fontsize=16),
+                widget.Systray(**powerlineAlter, background="#fefefe"), 
+                widget.Clock(format="󰞌  %b %d %a %I:%M %p",**powerlineAlter, background="#0316b0", fontsize=16, foreground="#fefefe"),
+                widget.Volume(fmt='  󰕾    {}  ', volume_app="pavucontrol", background="#000", fontsize=14, foreground="#fefefe"),
                 ],
-            24,
-            background = "#00000000",
-            opacity=1,
+            22,
+            background = "#1da0fb",
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
+        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
+        # By default we handle these events delayed to already improve performance, however your system might still be struggling
+        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
+        # x11_drag_polling_rate = 60,
     ),
 ]
 
@@ -294,9 +247,8 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus=[mainCol.fg],
-    border_normal=[mainCol.bg],
-    border_width=1,
+    border_focus=["#c0caf5"],
+    border_normal=["#414868"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -309,11 +261,9 @@ floating_layout = layout.Floating(
         Match(wm_class="Gimp-2.10"),
         Match(wm_class="Gthumb"),
         Match(wm_class="Lutris"),
-#        Match(wm_class="mpv"),
-        Match(wm_class="steamwebhelper"),
-        Match(wm_class="scrcpy"),
+        Match(wm_class="mpv"),
         #Match(wm_class="TelegramDesktop"),
-        Match(title="QtAppLol"),
+        Match(title="QtAppLol")
     ]
 )
 auto_fullscreen = True
@@ -343,8 +293,6 @@ I'm so retarded
 """
 
 @hook.subscribe.startup_once
-def autostartOnce():
+def autostart():
     home = os.path.expanduser('~/.config/qtile/autostartONCE.sh')
     subprocess.Popen([home])
-
-

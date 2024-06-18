@@ -1,17 +1,27 @@
 import = [
-    "~/.config/alacritty/themes/themes/nord.toml"
+    "~/.config/alacritty/colorSchemes/nordAlter.toml"
 ]
 
 [font]
 size = 10
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "Hack Nerd Font"
 
 [window]
-opacity = 0.45
+opacity = 0.7
 title = "Alacritty"
 
 [window.dimensions]
 columns = 105
 lines = 30
+
+[cursor]
+blink_interval = 400
+blink_timeout = 0
+
+[cursor.style]
+shape = "underline"
+blinking = "Always"
+# 1234567890
+# The quick brown fox jumped over the lazy dog

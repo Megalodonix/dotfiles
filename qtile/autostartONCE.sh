@@ -1,8 +1,3 @@
 #!/bin/sh
-picom &
-dunst &
-fcitx &
-xset -dpms &
-xset s off &
-play ~/SoundFiles/ViewpointEdited.mp3 &
+play ~/SoundFiles/Synchedit.mp3 &
 nitrogen --restore &

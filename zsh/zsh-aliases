@@ -1,0 +1,4 @@
+alias ls="eza --icons=always --color=auto"
+alias please="sudo"
+alias cat="bat"
+alias vim="nvim"

@@ -1,0 +1,4 @@
+eval "$(zoxide init zsh --cmd cd)"
+export EDITOR="nvim"
+export BROWSER="firefox"
+export TERMINAL="alacritty"

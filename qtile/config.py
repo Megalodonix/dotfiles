@@ -1,32 +1,7 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 import os
 import subprocess
 from libqtile import bar, layout, qtile, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras import widget
@@ -110,6 +85,48 @@ for vt in range(1, 8):
 
 groups = [Group(i) for i in "123456789"]
 
+groups= [
+    Group("1",
+          label="",
+          ),
+
+    Group("2",
+          label="",
+          ),
+
+    Group("3",
+          label="",
+          ),
+
+    Group("4",
+          label="",
+          ),
+
+    Group("5",
+          label="󰊖",
+          ),
+
+    Group("6",
+          label="",
+          ),
+
+    Group("7",
+          label="󰙴",
+          ),
+
+    Group("8",
+          label="",
+          ),
+
+    Group("9",
+          label="",
+          ),
+
+    Group("0",
+          label="",
+          ),
+]
+
 for i in groups:
     keys.extend(
         [
@@ -134,11 +151,15 @@ for i in groups:
         ]
     )
 
+borders=dict(
+    border_focus=[mainCol.fg],
+    border_normal=[mainCol.bg],
+    )
+
 layouts = [
     layout.Columns(
-        border_focus=[mainCol.fg],
-        border_normal=[mainCol.bg],
-        margin=8,
+        **borders,
+        margin=16,
         margin_on_single=None,
         border_width=1,
         grow_amount=5,
@@ -147,7 +168,7 @@ layouts = [
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     #layout.Stack(num_stacks=2),
-    layout.Bsp(),
+    layout.Bsp(**borders, border_width=1, margin=4),
     #layout.Matrix(),
     #layout.MonadTall(),
     #layout.MonadWide(),
@@ -160,7 +181,7 @@ layouts = [
         #border_width=1),
     #layout.TreeTab(),
     #layout.VerticalTile(),
-    layout.Zoomy(),
+    layout.Zoomy(columnwidth=300, margin=16),
 ]
 
 widget_defaults = dict(
@@ -224,13 +245,13 @@ screens = [
                                 fontsize=14,
                                 margin=2,
                                 disable_drag=True,
-                                this_current_screen_border=mainCol.green),
+                                this_current_screen_border=mainCol.yellow),
                 widget.Sep(
                     padding=16,
                     linewidth=0,
                     background="#00000000",
                     ),
-                widget.Prompt(background=mainCol.green, **rectDeco, prompt="Summon: ", foreground=mainCol.bg),
+                widget.Prompt(background=mainCol.purple, **rectDeco, prompt="Summon: ", foreground=mainCol.bg),
                 widget.Spacer(),
                 widget.WindowName(background=mainCol.cyan,
                                   foreground=mainCol.bg,
@@ -294,8 +315,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus=[mainCol.fg],
-    border_normal=[mainCol.bg],
+    **borders,
     border_width=1,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -313,6 +333,7 @@ floating_layout = layout.Floating(
         Match(wm_class="steamwebhelper"),
         Match(wm_class="scrcpy"),
         #Match(wm_class="TelegramDesktop"),
+        Match(wm_class="feh"),
         Match(title="QtAppLol"),
     ]
 )

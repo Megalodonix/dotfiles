@@ -1,0 +1,53 @@
+echo -e "\n"
+neofetch #hell yeah
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt nomatch
+unsetopt beep extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/megalodonix/.config/zsh/.zshrc'
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+zmodload zsh/complist
+compinit
+#_comp_options+=(globdots) # Include hidden
+
+
+# End of lines added by compinstall
+
+# Sources
+source ~/.config/zsh/.zkbd/alacritty
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source $ZDOTDIR/zsh-functions
+zsh_add_file "zsh-exports"
+zsh_add_file "zsh-prompt"
+zsh_add_file "zsh-aliases"
+
+# Plugins
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_completion "zsh-users/zsh-completions"
+
+
+# Autoloads (if needed)
+autoload -Uz colors && colors
+
+# keybinds
+# History substring searching
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Good bindings that don't come by default
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
